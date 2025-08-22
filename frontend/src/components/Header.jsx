@@ -37,6 +37,16 @@ const Header = () => {
       href: `/${language}/nature`,
       current: location.pathname.includes("nature"),
     },
+    {
+      name: isGeorgian ? "ტრანსპორტი" : "Transport",
+      href: `/${language}/transport-energy`,
+      current: location.pathname.includes("transport-energy"),
+    },
+    {
+      name: isGeorgian ? "ნარჩენები" : "Waste",
+      href: `/${language}/waste`,
+      current: location.pathname.includes("waste"),
+    },
   ];
 
   return (
