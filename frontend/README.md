@@ -88,104 +88,60 @@ The application supports automatic language routing:
 ### Supported Routes
 
 | Georgian | English | Description |
-|----------|---------|-------------|
-| `/ge` | `/en` | Dashboard |
-| `/ge/gender-statistics` | `/en/gender-statistics` | Gender Statistics |
-| `/ge/region-comparison` | `/en/region-comparison` | Region Comparison |
-| `/ge/municipal-comparison` | `/en/municipal-comparison` | Municipal Comparison |
-| `/ge/region/:id` | `/en/region/:id` | Region Detail |
-| `/ge/admin` | `/en/admin` | Admin Panel |
+# Frontend — Environmental Statistics Portal
 
-## 🔧 Development
+This folder contains the React frontend for the Environmental Statistics Portal. It is a small multilingual app (Georgian + English) built with Vite.
 
-### Language Context
+## Quick start
 
-The application uses React Context for language management:
-
-```jsx
-import { useLanguage } from './contexts/useLanguage';
-
-const MyComponent = () => {
-  const { language, changeLanguage, isGeorgian } = useLanguage();
-  
-  return (
-    <div>
-      <p>{isGeorgian ? 'ქართული' : 'English'}</p>
-      <button onClick={() => changeLanguage('en')}>Switch to English</button>
-    </div>
-  );
-};
-```
-
-### Adding New Pages
-
-1. Create component in `src/pages/`
-2. Add routes in `App.jsx` for both languages
-3. Update navigation in `Header.jsx`
-
-### Styling Guidelines
-
-- Use Tailwind CSS for layout and spacing
-- Use Material-UI for complex components
-- Follow mobile-first responsive design
-- Maintain consistent color scheme
-
-## 📦 Dependencies
-
-### Core Dependencies
-- `react` & `react-dom` - React framework
-- `react-router-dom` - Client-side routing
-- `@mui/material` - Material-UI components
-- `@emotion/react` & `@emotion/styled` - CSS-in-JS styling
-- `react-hot-toast` - Toast notifications
-- `tailwindcss` - Utility-first CSS framework
-
-### Development Dependencies
-- `vite` - Build tool and dev server
-- `eslint` - Code linting
-- `@vitejs/plugin-react-swc` - React plugin for Vite
-
-## 🚢 Deployment
-
-### Build for Production
+1. Change into the frontend directory:
 
 ```bash
-npm run build
+cd frontend
 ```
 
-The build artifacts will be stored in the `dist/` directory.
+2. Install dependencies and start the dev server:
 
-### Deploy to Vercel
+```bash
+npm install
+npm run dev
+```
 
-1. Push code to GitHub
-2. Connect repository to Vercel
-3. Deploy automatically on push
+3. Open the URL printed in the terminal (usually http://localhost:5173).
 
-### Deploy to Netlify
+## Scripts
 
-1. Run `npm run build`
-2. Upload `dist/` folder to Netlify
-3. Configure redirects for SPA routing
+- `npm run dev` — start development server
+- `npm run build` — production build
+- `npm run preview` — preview production build locally
+- `npm run lint` — run ESLint
 
-## 🤝 Contributing
+## Project layout (important files)
 
-1. Fork the project
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
+- `src/main.jsx` — app entry
+- `src/App.jsx` — routes and top-level layout
+- `src/components/Header.jsx` — header and language switcher
+- `src/contexts/` — language context and hooks
+- `src/pages/Dashboard.jsx` — main dashboard
+- `public/` — static assets
 
-## 📄 License
+## Language routing
 
-This project is open source and available under the [MIT License](LICENSE).
+The app uses language-aware routes. Examples:
 
-## 👥 Authors
+- `/ge` — Georgian home
+- `/en` — English home
+- `/ge/gender-statistics` and `/en/gender-statistics` — gender stats
 
-- **Your Name** - *Initial work*
+The header contains a language switcher that keeps the selected language across navigation.
 
-## 🙏 Acknowledgments
+## Notes for contributors
 
-- Material-UI team for excellent component library
-- Tailwind CSS for utility-first styling approach
-- Vite team for blazing fast build tool
-- React team for the amazing framework
+- Follow the existing contexts pattern when adding language-aware content.
+- Keep components small and prefer Tailwind classes for layout; use Material UI for complex widgets.
+
+If you want, I can also add a short CONTRIBUTING.md, or wire up a simple GitHub Action for linting on push.
+
+---
+
+MIT License — see `../LICENSE`

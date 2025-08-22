@@ -9,7 +9,6 @@ A modern, multilingual web application for environmental statistics and data vis
 - **📱 Responsive Design**: Mobile-first responsive design approach
 - **🔄 Dynamic Routing**: Language-aware routing system
 - **🎨 Beautiful UI**: Material-UI components with Tailwind CSS styling
-- **📊 Data Visualization**: Interactive gender statistics and regional comparisons
 - **⚡ Hot Module Reload**: Fast development experience with Vite
 - **🌡️ Environmental Data**: Comprehensive environmental statistics display
 
@@ -48,100 +47,59 @@ enviroment/
 - Node.js (version 18 or higher)
 - npm or yarn package manager
 
-### Installation
+# Environmental Statistics Portal
 
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/yourusername/environmental-statistics-portal.git
-   cd environmental-statistics-portal
-   ```
+A lightweight, multilingual React application for visualizing environmental statistics (Georgian & English).
 
-2. **Navigate to frontend directory**
-   ```bash
-   cd frontend
-   ```
+This repository contains the frontend application. See `frontend/README.md` for frontend-specific instructions.
 
-3. **Install dependencies**
-   ```bash
-   npm install
-   ```
+## Key points
 
-4. **Start the development server**
-   ```bash
-   npm run dev
-   ```
+- Multilingual UI (Georgian / English)
+- Built with React + Vite for fast development
+- Tailwind CSS + Material UI for styling and components
 
-5. **Open your browser**
-   Visit `http://localhost:5173` to view the application
+## Tech stack (high level)
 
-### Available Scripts
+- React
+- Vite
+- Tailwind CSS
+- @mui/material (Material UI)
+- react-router-dom
 
-In the frontend directory, you can run:
+## Quick start (frontend)
 
-- `npm run dev` - Starts the development server
-- `npm run build` - Builds the app for production
-- `npm run preview` - Preview the production build
-- `npm run lint` - Run ESLint for code linting
+1. Open a terminal and go to the frontend folder:
 
-## 🌐 Language Support
+```bash
+cd frontend
+```
 
-The application supports:
-- **Georgian (ქარ)**: Native Georgian language interface
-- **English (EN)**: English language interface
+2. Install dependencies and start the dev server:
 
-Language switching is available through the header navigation and persists across browser sessions.
+```bash
+npm install
+npm run dev
+```
 
-## 📊 Features Overview
+3. Open the URL shown in the terminal (usually http://localhost:5173).
 
-### Dashboard
-- Environmental statistics visualization
-- Regional data comparisons
-- Interactive charts and graphs
+For more details on scripts, configuration and language routing, open `frontend/README.md`.
 
-### Regional Components
-- Region-specific environmental data
-- Comparative analysis tools
-- Dynamic data visualization
+## Contributing
 
+Contributions are welcome. The typical flow:
+
+1. Fork the repo
+2. Create a branch: `git checkout -b feature/your-feature`
+3. Commit and push
+4. Open a pull request
+
+## License
+
+This project is licensed under the MIT License — see the `LICENSE` file.
+
+## Contact
+
+Open an issue in this repository for questions or help.
 ### Multilingual Context
-- Seamless language switching
-- Persistent language preferences
-- Localized content and UI elements
-
-## 🔧 Configuration
-
-### Vite Configuration
-The project uses Vite with React SWC plugin for fast builds and hot module replacement.
-
-### ESLint Configuration
-ESLint is configured with React-specific rules and modern JavaScript standards.
-
-### Tailwind CSS
-Tailwind CSS is integrated with Vite for utility-first styling approach.
-
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
-## 📝 License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
-
-## 📧 Contact
-
-For questions or support, please open an issue on GitHub.
-
-## 🙏 Acknowledgments
-
-- React team for the amazing framework
-- Material-UI team for the component library
-- Tailwind CSS for the utility-first CSS framework
-- Vite team for the lightning-fast build tool
-
----
-
-Made with ❤️ for environmental data visualization
