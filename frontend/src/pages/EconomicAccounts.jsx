@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import * as echarts from "echarts";
-import { motion } from "framer-motion";
+import { motion as Motion } from "framer-motion";
 import { BarChart3, TrendingUp, DollarSign, FileText } from "lucide-react";
 import { useLanguage } from "../contexts/useLanguage";
 
@@ -211,7 +211,7 @@ const EconomicAccounts = () => {
   };
 
   return (
-    <motion.div 
+    <Motion.div 
       className="min-h-screen bg-gradient-to-br from-indigo-50 to-purple-50 py-8"
       variants={containerVariants}
       initial="hidden"
@@ -219,7 +219,7 @@ const EconomicAccounts = () => {
     >
       <div className="container mx-auto px-4 max-w-7xl">
         {/* Header */}
-        <motion.div variants={itemVariants} className="text-center mb-12">
+        <Motion.div variants={itemVariants} className="text-center mb-12">
           <div className="flex items-center justify-center mb-4">
             <BarChart3 className="w-12 h-12 text-indigo-600 mr-4" />
             <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
@@ -231,10 +231,10 @@ const EconomicAccounts = () => {
               ? "ეკონომიკისა და გარემოს ურთიერთქმედების ანალიზი"
               : "Analysis of the interaction between economy and environment"}
           </p>
-        </motion.div>
+        </Motion.div>
 
         {/* Key Metrics */}
-        <motion.div variants={itemVariants} className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-12">
+        <Motion.div variants={itemVariants} className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-12">
           <div className="bg-white/70 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-white/20">
             <div className="flex items-center justify-between mb-2">
               <BarChart3 className="w-8 h-8 text-indigo-600" />
@@ -278,25 +278,25 @@ const EconomicAccounts = () => {
               {isGeorgian ? "ნატურალური კაპიტალი" : "Natural Capital"}
             </p>
           </div>
-        </motion.div>
+        </Motion.div>
 
         {/* Charts Section */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
-          <motion.div variants={itemVariants} className="bg-white/70 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-white/20">
+          <Motion.div variants={itemVariants} className="bg-white/70 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-white/20">
             <div ref={materialFlowRef} style={{ width: '100%', height: '400px' }} />
-          </motion.div>
+          </Motion.div>
 
-          <motion.div variants={itemVariants} className="bg-white/70 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-white/20">
+          <Motion.div variants={itemVariants} className="bg-white/70 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-white/20">
             <div ref={economicImpactRef} style={{ width: '100%', height: '400px' }} />
-          </motion.div>
+          </Motion.div>
         </div>
 
-        <motion.div variants={itemVariants} className="bg-white/70 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-white/20 mb-12">
+        <Motion.div variants={itemVariants} className="bg-white/70 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-white/20 mb-12">
           <div ref={resourceEfficiencyRef} style={{ width: '100%', height: '400px' }} />
-        </motion.div>
+        </Motion.div>
 
         {/* Key Indicators */}
-        <motion.div variants={itemVariants} className="bg-white/70 backdrop-blur-sm rounded-2xl p-8 shadow-lg border border-white/20">
+        <Motion.div variants={itemVariants} className="bg-white/70 backdrop-blur-sm rounded-2xl p-8 shadow-lg border border-white/20">
           <h3 className="text-2xl font-bold mb-6 text-gray-800">
             {isGeorgian ? "ძირითადი ინდიკატორები" : "Key Indicators"}
           </h3>
@@ -341,9 +341,9 @@ const EconomicAccounts = () => {
               </p>
             </div>
           </div>
-        </motion.div>
+        </Motion.div>
       </div>
-    </motion.div>
+    </Motion.div>
   );
 };
 

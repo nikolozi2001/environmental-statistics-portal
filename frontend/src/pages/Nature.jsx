@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import * as echarts from "echarts";
-import { motion } from "framer-motion";
+import { motion as Motion } from "framer-motion";
 import { Trees, Shield, Leaf, Bird } from "lucide-react";
 import { useLanguage } from "../contexts/useLanguage";
 
@@ -217,7 +217,7 @@ const Nature = () => {
   };
 
   return (
-    <motion.div 
+    <Motion.div 
       className="min-h-screen bg-gradient-to-br from-green-50 to-emerald-50 py-8"
       variants={containerVariants}
       initial="hidden"
@@ -225,7 +225,7 @@ const Nature = () => {
     >
       <div className="container mx-auto px-4 max-w-7xl">
         {/* Header */}
-        <motion.div variants={itemVariants} className="text-center mb-12">
+        <Motion.div variants={itemVariants} className="text-center mb-12">
           <div className="flex items-center justify-center mb-4">
             <Trees className="w-12 h-12 text-green-600 mr-4" />
             <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent">
@@ -237,10 +237,10 @@ const Nature = () => {
               ? "საქართველოს ბუნებრივი მემკვიდრეობის დაცვა და მონიტორინგი"
               : "Protection and monitoring of Georgia's natural heritage"}
           </p>
-        </motion.div>
+        </Motion.div>
 
         {/* Key Metrics */}
-        <motion.div variants={itemVariants} className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-12">
+        <Motion.div variants={itemVariants} className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-12">
           <div className="bg-white/70 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-white/20">
             <div className="flex items-center justify-between mb-2">
               <Trees className="w-8 h-8 text-green-600" />
@@ -284,25 +284,25 @@ const Nature = () => {
               {isGeorgian ? "ეროვნული პარკი" : "National Parks"}
             </p>
           </div>
-        </motion.div>
+        </Motion.div>
 
         {/* Charts Section */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
-          <motion.div variants={itemVariants} className="bg-white/70 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-white/20">
+          <Motion.div variants={itemVariants} className="bg-white/70 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-white/20">
             <div ref={forestChartRef} style={{ width: '100%', height: '400px' }} />
-          </motion.div>
+          </Motion.div>
 
-          <motion.div variants={itemVariants} className="bg-white/70 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-white/20">
+          <Motion.div variants={itemVariants} className="bg-white/70 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-white/20">
             <div ref={protectedAreasChartRef} style={{ width: '100%', height: '400px' }} />
-          </motion.div>
+          </Motion.div>
         </div>
 
-        <motion.div variants={itemVariants} className="bg-white/70 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-white/20 mb-12">
+        <Motion.div variants={itemVariants} className="bg-white/70 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-white/20 mb-12">
           <div ref={biodiversityChartRef} style={{ width: '100%', height: '400px' }} />
-        </motion.div>
+        </Motion.div>
 
         {/* National Parks */}
-        <motion.div variants={itemVariants} className="bg-white/70 backdrop-blur-sm rounded-2xl p-8 shadow-lg border border-white/20">
+        <Motion.div variants={itemVariants} className="bg-white/70 backdrop-blur-sm rounded-2xl p-8 shadow-lg border border-white/20">
           <h3 className="text-2xl font-bold mb-6 text-gray-800">
             {isGeorgian ? "ეროვნული პარკები" : "National Parks"}
           </h3>
@@ -367,9 +367,9 @@ const Nature = () => {
               </p>
             </div>
           </div>
-        </motion.div>
+        </Motion.div>
       </div>
-    </motion.div>
+    </Motion.div>
   );
 };
 

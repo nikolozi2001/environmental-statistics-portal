@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import * as echarts from "echarts";
-import { motion } from "framer-motion";
+import { motion as Motion } from "framer-motion";
 import { Trash2, Recycle, AlertTriangle, TrendingDown } from "lucide-react";
 import { useLanguage } from "../contexts/useLanguage";
 
@@ -202,7 +202,7 @@ const Waste = () => {
   };
 
   return (
-    <motion.div 
+    <Motion.div 
       className="min-h-screen bg-gradient-to-br from-amber-50 to-orange-50 py-8"
       variants={containerVariants}
       initial="hidden"
@@ -210,7 +210,7 @@ const Waste = () => {
     >
       <div className="container mx-auto px-4 max-w-7xl">
         {/* Header */}
-        <motion.div variants={itemVariants} className="text-center mb-12">
+        <Motion.div variants={itemVariants} className="text-center mb-12">
           <div className="flex items-center justify-center mb-4">
             <Trash2 className="w-12 h-12 text-amber-600 mr-4" />
             <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-amber-600 to-orange-600 bg-clip-text text-transparent">
@@ -222,10 +222,10 @@ const Waste = () => {
               ? "ნარჩენების მართვისა და გადამუშავების მონიტორინგი"
               : "Monitoring waste management and recycling processes"}
           </p>
-        </motion.div>
+        </Motion.div>
 
         {/* Key Metrics */}
-        <motion.div variants={itemVariants} className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-12">
+        <Motion.div variants={itemVariants} className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-12">
           <div className="bg-white/70 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-white/20">
             <div className="flex items-center justify-between mb-2">
               <Trash2 className="w-8 h-8 text-gray-600" />
@@ -269,25 +269,25 @@ const Waste = () => {
               {isGeorgian ? "ტონა ორგანული" : "Tons Organic"}
             </p>
           </div>
-        </motion.div>
+        </Motion.div>
 
         {/* Charts Section */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
-          <motion.div variants={itemVariants} className="bg-white/70 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-white/20">
+          <Motion.div variants={itemVariants} className="bg-white/70 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-white/20">
             <div ref={wasteCompositionRef} style={{ width: '100%', height: '400px' }} />
-          </motion.div>
+          </Motion.div>
 
-          <motion.div variants={itemVariants} className="bg-white/70 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-white/20">
+          <Motion.div variants={itemVariants} className="bg-white/70 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-white/20">
             <div ref={disposalMethodsRef} style={{ width: '100%', height: '400px' }} />
-          </motion.div>
+          </Motion.div>
         </div>
 
-        <motion.div variants={itemVariants} className="bg-white/70 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-white/20 mb-12">
+        <Motion.div variants={itemVariants} className="bg-white/70 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-white/20 mb-12">
           <div ref={recyclingTrendRef} style={{ width: '100%', height: '400px' }} />
-        </motion.div>
+        </Motion.div>
 
         {/* Waste Management Facilities */}
-        <motion.div variants={itemVariants} className="bg-white/70 backdrop-blur-sm rounded-2xl p-8 shadow-lg border border-white/20">
+        <Motion.div variants={itemVariants} className="bg-white/70 backdrop-blur-sm rounded-2xl p-8 shadow-lg border border-white/20">
           <h3 className="text-2xl font-bold mb-6 text-gray-800">
             {isGeorgian ? "ნარჩენების მართვის ობიექტები" : "Waste Management Facilities"}
           </h3>
@@ -368,9 +368,9 @@ const Waste = () => {
               </div>
             </div>
           </div>
-        </motion.div>
+        </Motion.div>
       </div>
-    </motion.div>
+    </Motion.div>
   );
 };
 

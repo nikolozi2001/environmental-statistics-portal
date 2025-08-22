@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
+import { motion as Motion } from "framer-motion";
 import { useLanguage } from "../contexts/useLanguage";
 import iconEn from "../assets/images/en.png";
 import iconGe from "../assets/images/ge.png";
@@ -49,8 +50,38 @@ const Header = () => {
     },
   ];
 
+  // Animation variants for header
+  const headerVariants = {
+    hidden: { y: -100, opacity: 0 },
+    visible: { 
+      y: 0, 
+      opacity: 1,
+      transition: { 
+        duration: 0.6,
+        ease: "easeOut"
+      }
+    }
+  };
+
+  const NavItemVariants = {
+    hidden: { y: -20, opacity: 0 },
+    visible: { 
+      y: 0, 
+      opacity: 1,
+      transition: { 
+        duration: 0.4,
+        ease: "easeOut"
+      }
+    }
+  };
+
   return (
-    <header className="bg-white/90 backdrop-blur-md border-b border-gray-100 sticky top-0 z-50 shadow-sm">
+    <Motion.header 
+      initial="hidden"
+      animate="visible"
+      variants={headerVariants}
+      className="bg-white/90 backdrop-blur-md border-b border-gray-100 sticky top-0 z-50 shadow-sm"
+    >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
@@ -73,29 +104,44 @@ const Header = () => {
           {/* Desktop Navigation */}
           <div className="hidden md:flex md:items-center md:space-x-1">
             <div className="flex items-baseline space-x-1">
-              {navigation.map((item) => (
-                <Link
+              {navigation.map((item, index) => (
+                <Motion.div
                   key={item.name}
-                  to={item.href}
-                  className={`relative px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 group ${
-                    item.current
-                      ? "text-blue-600 bg-blue-50"
-                      : "text-gray-600 hover:text-blue-600 hover:bg-gray-50"
-                  }`}
+                  initial="hidden"
+                  animate="visible"
+                  variants={NavItemVariants}
+                  transition={{ delay: index * 0.1 }}
                 >
-                  {item.name}
-                  {item.current && (
-                    <span className="absolute inset-x-0 -bottom-0.5 h-0.5 bg-blue-600 rounded-full"></span>
-                  )}
-                </Link>
+                  <Link
+                    to={item.href}
+                    className={`relative px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 group ${
+                      item.current
+                        ? "text-blue-600 bg-blue-50"
+                        : "text-gray-600 hover:text-blue-600 hover:bg-gray-50"
+                    }`}
+                  >
+                    {item.name}
+                    {item.current && (
+                      <span className="absolute inset-x-0 -bottom-0.5 h-0.5 bg-blue-600 rounded-full"></span>
+                    )}
+                  </Link>
+                </Motion.div>
               ))}
             </div>
 
             {/* Language Switcher */}
-            <div className="ml-4 flex items-center space-x-2 border-l border-gray-200 pl-4">
-              <button
+            <Motion.div 
+              initial="hidden"
+              animate="visible"
+              variants={NavItemVariants}
+              transition={{ delay: 0.8 }}
+              className="ml-4 flex items-center space-x-2 border-l border-gray-200 pl-4"
+            >
+              <Motion.button
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.95 }}
                 onClick={() => changeLanguage("ge")}
-                className={`p-2 rounded-full transition-all duration-300 transform hover:scale-110 ${
+                className={`p-2 rounded-full transition-all duration-300 cursor-pointer ${
                   language === "ge"
                     ? "bg-gradient-to-r from-amber-400 to-amber-500 shadow-md ring-2 ring-amber-200"
                     : "bg-gray-100 hover:bg-gray-200 opacity-90 hover:opacity-100"
@@ -107,10 +153,12 @@ const Header = () => {
                   alt="Georgian"
                   className="w-5 h-5 object-contain"
                 />
-              </button>
-              <button
+              </Motion.button>
+              <Motion.button
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.95 }}
                 onClick={() => changeLanguage("en")}
-                className={`p-2 rounded-full transition-all duration-300 transform hover:scale-110 ${
+                className={`p-2 rounded-full transition-all duration-300 cursor-pointer ${
                   language === "en"
                     ? "bg-gradient-to-r from-blue-400 to-blue-500 shadow-md ring-2 ring-blue-200"
                     : "bg-gray-100 hover:bg-gray-200 opacity-90 hover:opacity-100"
@@ -122,15 +170,22 @@ const Header = () => {
                   alt="English"
                   className="w-5 h-5 object-contain"
                 />
-              </button>
-            </div>
+              </Motion.button>
+            </Motion.div>
           </div>
 
           {/* Mobile menu button */}
           <div className="flex md:hidden items-center">
             {/* Mobile Language Switcher */}
-            <div className="flex mr-3 space-x-2">
-              <button
+            <Motion.div 
+              initial="hidden"
+              animate="visible"
+              variants={NavItemVariants}
+              className="flex mr-3 space-x-2"
+            >
+              <Motion.button
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.95 }}
                 onClick={() => changeLanguage("ge")}
                 className={`p-1.5 rounded-full transition-all ${
                   language === "ge"
@@ -144,8 +199,10 @@ const Header = () => {
                   alt="Georgian"
                   className="w-4 h-4 object-contain"
                 />
-              </button>
-              <button
+              </Motion.button>
+              <Motion.button
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.95 }}
                 onClick={() => changeLanguage("en")}
                 className={`p-1.5 rounded-full transition-all ${
                   language === "en"
@@ -159,10 +216,12 @@ const Header = () => {
                   alt="English"
                   className="w-4 h-4 object-contain"
                 />
-              </button>
-            </div>
+              </Motion.button>
+            </Motion.div>
 
-            <button
+            <Motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
               onClick={() => setIsOpen(!isOpen)}
               type="button"
               className="inline-flex items-center justify-center p-2 rounded-lg text-gray-600 hover:text-blue-600 hover:bg-blue-50 focus:outline-none transition-colors duration-300"
@@ -203,7 +262,7 @@ const Header = () => {
                   />
                 </svg>
               )}
-            </button>
+            </Motion.button>
           </div>
         </div>
       </div>
@@ -235,7 +294,7 @@ const Header = () => {
           </div>
         </div>
       )}
-    </header>
+    </Motion.header>
   );
 };
 
