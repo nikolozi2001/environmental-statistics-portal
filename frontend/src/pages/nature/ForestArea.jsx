@@ -124,6 +124,14 @@ const ForestArea = () => {
             fontSize: 14,
             color: "#374151",
             fontWeight: "600",
+            formatter: function (params) {
+              if (params.data.children) {
+                return `${params.name}\n${params.value} ${
+                  isGeorgian ? "ათ. ჰა" : "thous. ha"
+                }`;
+              }
+              return params.name;
+            },
           },
           leaves: {
             label: {
@@ -132,6 +140,11 @@ const ForestArea = () => {
               align: "left",
               fontSize: 12,
               color: "#4b5563",
+              formatter: function (params) {
+                return `${params.name}\n${params.value} ${
+                  isGeorgian ? "ათ. ჰა" : "thous. ha"
+                }`;
+              },
             },
             itemStyle: {
               color: function (params) {
@@ -207,6 +220,63 @@ const ForestArea = () => {
             </p>
           </div>
           <div ref={chartRef} style={{ width: "100%", height: "600px" }} />
+        </div>
+
+        {/* Area Statistics */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+          <div className="bg-gradient-to-br from-green-50 to-emerald-50 rounded-2xl shadow-lg p-6 border border-green-100">
+            <div className="flex items-center justify-between mb-4">
+              <div className="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center">
+                <span className="text-2xl">🌲</span>
+              </div>
+              <span className="text-sm font-semibold text-green-600 bg-green-100 px-3 py-1 rounded-full">
+                {isGeorgian ? "ყველაზე დიდი" : "Largest"}
+              </span>
+            </div>
+            <h4 className="text-lg font-semibold text-gray-800 mb-2">
+              {isGeorgian ? "დაცული ტერიტორიები" : "Protected Areas"}
+            </h4>
+            <p className="text-3xl font-bold text-green-700 mb-1">574.0</p>
+            <p className="text-sm text-gray-600">
+              {isGeorgian ? "ათასი ჰექტარი" : "Thousand Hectares"}
+            </p>
+          </div>
+
+          <div className="bg-gradient-to-br from-blue-50 to-cyan-50 rounded-2xl shadow-lg p-6 border border-blue-100">
+            <div className="flex items-center justify-between mb-4">
+              <div className="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center">
+                <span className="text-2xl">📊</span>
+              </div>
+              <span className="text-sm font-semibold text-blue-600 bg-blue-100 px-3 py-1 rounded-full">
+                {isGeorgian ? "საშუალო" : "Average"}
+              </span>
+            </div>
+            <h4 className="text-lg font-semibold text-gray-800 mb-2">
+              {isGeorgian ? "რეგიონული საშუალო" : "Regional Average"}
+            </h4>
+            <p className="text-3xl font-bold text-blue-700 mb-1">307.7</p>
+            <p className="text-sm text-gray-600">
+              {isGeorgian ? "ათასი ჰექტარი" : "Thousand Hectares"}
+            </p>
+          </div>
+
+          <div className="bg-gradient-to-br from-purple-50 to-pink-50 rounded-2xl shadow-lg p-6 border border-purple-100">
+            <div className="flex items-center justify-between mb-4">
+              <div className="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center">
+                <span className="text-2xl">🏔️</span>
+              </div>
+              <span className="text-sm font-semibold text-purple-600 bg-purple-100 px-3 py-1 rounded-full">
+                {isGeorgian ? "ყველაზე პატარა" : "Smallest"}
+              </span>
+            </div>
+            <h4 className="text-lg font-semibold text-gray-800 mb-2">
+              {isGeorgian ? "აჭარის ავტონომიური რესპუბლიკა" : "Adjara A.R."}
+            </h4>
+            <p className="text-3xl font-bold text-purple-700 mb-1">149.6</p>
+            <p className="text-sm text-gray-600">
+              {isGeorgian ? "ათასი ჰექტარი" : "Thousand Hectares"}
+            </p>
+          </div>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
