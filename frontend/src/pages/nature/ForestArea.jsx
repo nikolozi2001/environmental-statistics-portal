@@ -2,47 +2,48 @@ import React, { useEffect, useRef, useState } from "react";
 import * as echarts from "echarts";
 import { useLanguage } from "../../contexts/useLanguage";
 
+// --- SOLUTION ---
+// Define constant data outside the component to prevent re-creation on every render.
+const dataGeo = [
+  { name: "დაცული ტერიტორიები", value: 574.0 },
+  { name: "აფხაზეთი", value: 423.3 },
+  { name: "შიდა ქართლი", value: 284.3 },
+  { name: "კახეთი", value: 283.6 },
+  { name: "იმერეთი", value: 280.2 },
+  { name: "სამეგრელო-ზემო სვანეთი", value: 271.6 },
+  { name: "რაჭა-ლეჩხუმი და ქვემო სვანეთი", value: 267.9 },
+  { name: "მცხეთა-მთიანეთი", value: 181.9 },
+  { name: "აჭარის ავტონომიური რესპუბლიკა", value: 149.6 },
+];
+
+const dataEng = [
+  { name: "Protected Areas", value: 574.0 },
+  { name: "Abkhazia", value: 423.3 },
+  { name: "Shida Kartli", value: 284.3 },
+  { name: "Kakheti", value: 283.6 },
+  { name: "Imereti", value: 280.2 },
+  { name: "Samegrelo-Zemo Svaneti", value: 271.6 },
+  { name: "Racha-Lechkhumi & Kvemo Svaneti", value: 267.9 },
+  { name: "Mtskheta-Mtianeti", value: 181.9 },
+  { name: "Adjara A.R.", value: 149.6 },
+];
+
 const ForestArea = () => {
   const chartRef = useRef(null);
   const { isGeorgian } = useLanguage();
-  const [chartData, setChartData] = useState([]);
+  // Initialize state directly, which is slightly more efficient
+  const [chartData, setChartData] = useState(isGeorgian ? dataGeo : dataEng);
 
+  // This effect now only runs when the language changes.
   useEffect(() => {
-    // Define data in both languages
-    const dataGeo = [
-      { name: "დაცული ტერიტორიები", value: 574.0 },
-      { name: "აფხაზეთი", value: 423.3 },
-      { name: "შიდა ქართლი", value: 284.3 },
-      { name: "კახეთი", value: 283.6 },
-      { name: "იმერეთი", value: 280.2 },
-      { name: "სამეგრელო-ზემო სვანეთი", value: 271.6 },
-      { name: "რაჭა-ლეჩხუმი და ქვემო სვანეთი", value: 267.9 },
-      { name: "მცხეთა-მთიანეთი", value: 181.9 },
-      { name: "აჭარის ავტონომიური რესპუბლიკა", value: 149.6 },
-    ];
-
-    const dataEng = [
-      { name: "Protected Areas", value: 574.0 },
-      { name: "Abkhazia", value: 423.3 },
-      { name: "Shida Kartli", value: 284.3 },
-      { name: "Kakheti", value: 283.6 },
-      { name: "Imereti", value: 280.2 },
-      { name: "Samegrelo-Zemo Svaneti", value: 271.6 },
-      { name: "Racha-Lechkhumi & Kvemo Svaneti", value: 267.9 },
-      { name: "Mtskheta-Mtianeti", value: 181.9 },
-      { name: "Adjara A.R.", value: 149.6 },
-    ];
-
-    // Set the appropriate data based on language
     setChartData(isGeorgian ? dataGeo : dataEng);
   }, [isGeorgian]);
 
   useEffect(() => {
-    if (chartData.length === 0) return;
+    if (chartData.length === 0 || !chartRef.current) return;
 
     const chart = echarts.init(chartRef.current);
 
-    // Color palette for the chart
     const colorPalette = [
       "#059669",
       "#10b981",
@@ -110,19 +111,19 @@ const ForestArea = () => {
               },
             },
           ],
-          top: "15%",
-          left: "10%",
+          top: "12%",
+          left: "5%",
           bottom: "10%",
-          right: "15%",
-          symbolSize: 10,
-          orient: "vertical",
+          right: "25%",
+          symbolSize: 15,
+          orient: "horizontal",
           label: {
             position: "left",
             verticalAlign: "middle",
             align: "right",
-            fontSize: 12,
+            fontSize: 14,
             color: "#374151",
-            fontWeight: "normal",
+            fontWeight: "600",
           },
           leaves: {
             label: {
@@ -146,7 +147,7 @@ const ForestArea = () => {
           lineStyle: {
             color: "#9ca3af",
             width: 1.5,
-            curveness: 0.2,
+            curveness: 0.5,
           },
           itemStyle: {
             color: "#065f46",
@@ -155,6 +156,7 @@ const ForestArea = () => {
           },
           emphasis: {
             focus: "descendant",
+            scale: true,
             lineStyle: {
               width: 2.5,
               color: "#4b5563",
@@ -175,7 +177,7 @@ const ForestArea = () => {
       window.removeEventListener("resize", handleResize);
       chart.dispose();
     };
-  }, [isGeorgian, chartData]);
+  }, [isGeorgian, chartData]); // chartData is still needed here to redraw the chart when data changes
 
   return (
     <div className="bg-gray-50 min-h-screen pb-10">
