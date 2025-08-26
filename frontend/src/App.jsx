@@ -15,6 +15,7 @@ import AirQuality from "./pages/AirQuality";
 import Climate from "./pages/Climate";
 import WaterResources from "./pages/WaterResources";
 import Nature from "./pages/Nature";
+import ForestArea from "./pages/nature/ForestArea.jsx";
 import TransportEnergy from "./pages/TransportEnergy";
 import Waste from "./pages/Waste";
 import EconomicAccounts from "./pages/EconomicAccounts";
@@ -69,6 +70,9 @@ function App() {
                 <Route path="/ge/nature" element={<Nature />} />
                 <Route path="/en/nature" element={<Nature />} />
                 
+                <Route path="/ge/nature/forest-area" element={<ForestArea />} />
+                <Route path="/en/nature/forest-area" element={<ForestArea />} />
+
                 {/* Transport & Energy routes */}
                 <Route path="/ge/transport-energy" element={<TransportEnergy />} />
                 <Route path="/en/transport-energy" element={<TransportEnergy />} />

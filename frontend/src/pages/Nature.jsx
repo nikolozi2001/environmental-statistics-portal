@@ -1,8 +1,17 @@
 import React, { useEffect, useRef } from "react";
 import * as echarts from "echarts";
 import { motion as Motion } from "framer-motion";
-import { Trees, Shield, Leaf, Bird, Mountain, Flame, Sprout } from "lucide-react";
+import {
+  Trees,
+  Shield,
+  Leaf,
+  Bird,
+  Mountain,
+  Flame,
+  Sprout,
+} from "lucide-react";
 import { useLanguage } from "../contexts/useLanguage";
+import { Link } from "react-router-dom";
 
 const Nature = () => {
   const { isGeorgian } = useLanguage();
@@ -361,9 +370,11 @@ const Nature = () => {
                   : "Information about forest cover, timber cutting and forest renewal."}
               </p>
               <div className="flex items-center justify-between">
-                <a
-                  href={
-                    isGeorgian ? "Forest_Area_GEO.html" : "Forest_Area_ENG.html"
+                <Link
+                  to={
+                    isGeorgian
+                      ? "/ge/nature/forest-area"
+                      : "/en/nature/forest-area"
                   }
                   className="text-emerald-700 font-medium flex items-center gap-2 hover:gap-3 transition-all duration-300"
                 >
@@ -380,7 +391,7 @@ const Nature = () => {
                       clipRule="evenodd"
                     />
                   </svg>
-                </a>
+                </Link>
                 <span className="text-xs font-semibold text-emerald-800 bg-emerald-100 px-3 py-1 rounded-full">
                   {isGeorgian ? "39.4% ფართობი" : "39.4% area"}
                 </span>
