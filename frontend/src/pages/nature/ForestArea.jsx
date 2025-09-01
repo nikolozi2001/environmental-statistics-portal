@@ -59,17 +59,17 @@ const ForestArea = () => {
       renderer: "canvas",
     });
 
-    // Modern gradient colors
+    // Government-appropriate color palette (blues and greens)
     const colorPalette = [
-      "#10b981",
-      "#059669",
-      "#047857",
-      "#065f46",
-      "#14b8a6",
+      "#1a56db",
+      "#2563eb",
+      "#3b82f6",
+      "#0e7490",
+      "#0891b2",
       "#0d9488",
-      "#0f766e",
-      "#115e59",
-      "#06b6d4",
+      "#059669",
+      "#16a34a",
+      "#15803d",
     ];
 
     const option = {
@@ -81,27 +81,27 @@ const ForestArea = () => {
         left: "center",
         top: "20",
         textStyle: {
-          fontSize: 28,
+          fontSize: 24,
           fontWeight: "bold",
-          color: "#f3f4f6",
+          color: "#1f2937",
           fontFamily: "system-ui, -apple-system, sans-serif",
         },
         subtext: isGeorgian
           ? "ინტერაქტიული ვიზუალიზაცია • ათასი ჰექტარი"
           : "Interactive Visualization • Thousand Hectares",
         subtextStyle: {
-          fontSize: 16,
-          color: "#9ca3af",
+          fontSize: 14,
+          color: "#6b7280",
           fontFamily: "system-ui, -apple-system, sans-serif",
         },
       },
       tooltip: {
         trigger: "item",
-        backgroundColor: "rgba(17, 24, 39, 0.95)",
-        borderColor: "#374151",
+        backgroundColor: "rgba(255, 255, 255, 0.95)",
+        borderColor: "#d1d5db",
         borderWidth: 1,
         textStyle: {
-          color: "#f3f4f6",
+          color: "#1f2937",
           fontSize: 14,
         },
         formatter: (params) => {
@@ -129,7 +129,7 @@ const ForestArea = () => {
           `;
         },
         extraCssText:
-          "backdrop-filter: blur(10px); border-radius: 8px; box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);",
+          "border-radius: 6px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);",
       },
       series: [
         {
@@ -142,16 +142,12 @@ const ForestArea = () => {
                 ...item,
                 itemStyle: {
                   color: colorPalette[index % colorPalette.length],
-                  shadowBlur: 10,
-                  shadowColor: "rgba(0, 0, 0, 0.3)",
                 },
               })),
               itemStyle: {
-                color: "#065f46",
-                borderColor: "#10b981",
-                borderWidth: 3,
-                shadowBlur: 20,
-                shadowColor: "rgba(16, 185, 129, 0.5)",
+                color: "#1e40af",
+                borderColor: "#1d4ed8",
+                borderWidth: 2,
               },
             },
           ],
@@ -159,14 +155,14 @@ const ForestArea = () => {
           left: "5%",
           bottom: "10%",
           right: "20%",
-          symbolSize: 16,
+          symbolSize: 14,
           orient: "horizontal",
           label: {
             position: "left",
             verticalAlign: "middle",
             align: "right",
-            fontSize: 16,
-            color: "#e5e7eb",
+            fontSize: 14,
+            color: "#374151",
             fontWeight: "600",
             fontFamily: "system-ui, -apple-system, sans-serif",
             formatter: function (params) {
@@ -179,14 +175,14 @@ const ForestArea = () => {
             },
             rich: {
               title: {
-                fontSize: 18,
+                fontSize: 16,
                 fontWeight: "bold",
-                color: "#f3f4f6",
-                padding: [0, 0, 8, 0],
+                color: "#1f2937",
+                padding: [0, 0, 6, 0],
               },
               value: {
-                fontSize: 14,
-                color: "#9ca3af",
+                fontSize: 12,
+                color: "#6b7280",
               },
             },
           },
@@ -195,8 +191,8 @@ const ForestArea = () => {
               position: "right",
               verticalAlign: "middle",
               align: "left",
-              fontSize: 14,
-              color: "#e5e7eb",
+              fontSize: 12,
+              color: "#374151",
               fontFamily: "system-ui, -apple-system, sans-serif",
               formatter: function (params) {
                 return `{name|${params.name}}\n{value|${params.value} ${
@@ -205,55 +201,49 @@ const ForestArea = () => {
               },
               rich: {
                 name: {
-                  fontSize: 14,
-                  color: "#f3f4f6",
+                  fontSize: 12,
+                  color: "#1f2937",
                   padding: [0, 0, 4, 0],
                 },
                 value: {
-                  fontSize: 12,
-                  color: "#9ca3af",
+                  fontSize: 11,
+                  color: "#6b7280",
                   fontWeight: "bold",
                 },
               },
             },
             itemStyle: {
               borderRadius: 4,
-              borderWidth: 2,
-              borderColor: "#1f2937",
+              borderWidth: 1,
+              borderColor: "#e5e7eb",
             },
           },
           expandAndCollapse: true,
-          animationDuration: 1000,
-          animationEasing: "elasticOut",
+          animationDuration: 800,
+          animationEasing: "cubicOut",
           initialTreeDepth: 2,
           lineStyle: {
-            color: "#4b5563",
-            width: 2,
-            curveness: 0.5,
-            shadowBlur: 2,
-            shadowColor: "rgba(0, 0, 0, 0.2)",
+            color: "#9ca3af",
+            width: 1.5,
+            curveness: 0.4,
           },
           emphasis: {
             focus: "descendant",
             lineStyle: {
-              width: 3,
-              color: "#10b981",
-              shadowBlur: 10,
-              shadowColor: "rgba(16, 185, 129, 0.5)",
+              width: 2,
+              color: "#2563eb",
             },
             itemStyle: {
-              borderColor: "#10b981",
-              borderWidth: 3,
-              shadowBlur: 20,
-              shadowColor: "rgba(16, 185, 129, 0.5)",
+              borderColor: "#2563eb",
+              borderWidth: 2,
             },
           },
         },
       ],
       animation: true,
       animationThreshold: 100,
-      animationDurationUpdate: 750,
-      animationEasingUpdate: "elasticOut",
+      animationDurationUpdate: 600,
+      animationEasingUpdate: "cubicOut",
     };
 
     chart.setOption(option);
@@ -282,106 +272,85 @@ const ForestArea = () => {
 
   const StatCard = ({ icon: Icon, title, value, subtitle, color, delay }) => (
     <div
-      className={`transform transition-all duration-700 ${
-        isAnimated ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
+      className={`transform transition-all duration-500 ${
+        isAnimated ? "translate-y-0 opacity-100" : "translate-y-6 opacity-0"
       }`}
       style={{ transitionDelay: `${delay}ms` }}
     >
-      <div className="relative group h-full">
-        <div
-          className={`absolute -inset-1 ${color} rounded-2xl blur-lg opacity-25 group-hover:opacity-40 transition-opacity`}
-        ></div>
-        <div className="relative bg-gradient-to-br from-gray-900 to-gray-800 rounded-2xl p-6 h-full border border-gray-700 hover:border-gray-600 transition-all duration-300">
-          <div className="flex items-start justify-between mb-4">
-            <div
-              className={`w-12 h-12 ${color} bg-opacity-20 rounded-xl flex items-center justify-center`}
-            >
-              <Icon className={`w-6 h-6 text-white`} />
-            </div>
-            <span
-              className={`text-xs font-semibold text-gray-400 ${color} bg-opacity-10 px-3 py-1 rounded-full`}
-            >
-              {subtitle}
-            </span>
-          </div>
-          <h4 className="text-lg font-medium text-gray-200 mb-2">{title}</h4>
-          <p
-            className={`text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r ${color}`}
+      <div className="bg-white rounded-lg shadow-sm p-5 h-full border border-gray-200 hover:shadow-md transition-all duration-300">
+        <div className="flex items-start justify-between mb-3">
+          <div
+            className={`w-10 h-10 ${color} bg-opacity-10 rounded-lg flex items-center justify-center`}
           >
-            {value}
-          </p>
-          <p className="text-sm text-gray-400 mt-1">
-            {isGeorgian ? "ათასი ჰექტარი" : "Thousand Hectares"}
-          </p>
+            <Icon className={`w-5 h-5 ${color.split(" ")[1]}`} />
+          </div>
+          <span
+            className={`text-xs font-medium text-gray-500 ${color} bg-opacity-5 px-2 py-1 rounded-full`}
+          >
+            {subtitle}
+          </span>
         </div>
+        <h4 className="text-base font-medium text-gray-700 mb-2">{title}</h4>
+        <p className={`text-2xl font-bold ${color.split(" ")[1]}`}>{value}</p>
+        <p className="text-xs text-gray-500 mt-1">
+          {isGeorgian ? "ათასი ჰექტარი" : "Thousand Hectares"}
+        </p>
       </div>
     </div>
   );
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900">
-      {/* Animated background elements */}
-      <div className="fixed inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute -top-40 -right-40 w-80 h-80 bg-green-500 rounded-full filter blur-[120px] opacity-20 animate-pulse"></div>
-        <div
-          className="absolute -bottom-40 -left-40 w-96 h-96 bg-emerald-500 rounded-full filter blur-[120px] opacity-20 animate-pulse"
-          style={{ animationDelay: "1s" }}
-        ></div>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-teal-500 rounded-full filter blur-[150px] opacity-10"></div>
-      </div>
-
+    <div className="min-h-screen bg-gray-50">
       {/* Content */}
       <div className="relative z-10">
         {/* Hero Section */}
-        <section className="relative overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-gray-900/50 to-gray-900"></div>
-          <div className="relative px-4 py-20 text-center">
+        <section className="relative overflow-hidden bg-gradient-to-b from-blue-50 to-white">
+          <div className="px-4 py-12 text-center">
             <div className="max-w-5xl mx-auto">
               <div
-                className={`transform transition-all duration-700 ${
+                className={`transform transition-all duration-500 ${
                   isAnimated
                     ? "translate-y-0 opacity-100"
-                    : "translate-y-10 opacity-0"
+                    : "translate-y-6 opacity-0"
                 }`}
               >
-                <div className="flex justify-center mb-6">
-                  <div className="relative">
-                    <div className="absolute inset-0 bg-green-500 blur-xl opacity-50"></div>
-                    <TreePine className="relative w-20 h-20 text-green-400" />
+                <div className="flex justify-center mb-4">
+                  <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center">
+                    <TreePine className="w-8 h-8 text-blue-700" />
                   </div>
                 </div>
-                <h1 className="text-5xl md:text-6xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-emerald-400">
+                <h1 className="text-3xl md:text-4xl font-bold mb-4 text-gray-800">
                   {isGeorgian
                     ? "საქართველოს ტყის რესურსები"
                     : "Georgian Forest Resources"}
                 </h1>
-                <p className="text-xl text-gray-300 max-w-3xl mx-auto mb-8">
+                <p className="text-lg text-gray-600 max-w-3xl mx-auto mb-6">
                   {isGeorgian
                     ? "ინტერაქტიული ვიზუალიზაცია და დეტალური ანალიზი რეგიონების მიხედვით"
                     : "Interactive visualization and detailed analysis by regions"}
                 </p>
 
                 {/* Quick Stats */}
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-3xl mx-auto">
-                  <div className="bg-gray-800/30 backdrop-blur-sm border border-gray-700 rounded-xl p-4 hover:bg-gray-800/50 transition-all">
-                    <div className="text-2xl font-bold text-green-400">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-3 max-w-3xl mx-auto">
+                  <div className="bg-white shadow-sm border border-gray-200 rounded-lg p-3">
+                    <div className="text-xl font-bold text-blue-700">
                       3,069.1
                     </div>
-                    <div className="text-sm text-gray-400">
+                    <div className="text-xs text-gray-500">
                       {isGeorgian ? "ათ. ჰა სულ" : "thous. ha total"}
                     </div>
                   </div>
-                  <div className="bg-gray-800/30 backdrop-blur-sm border border-gray-700 rounded-xl p-4 hover:bg-gray-800/50 transition-all">
-                    <div className="text-2xl font-bold text-emerald-400">
+                  <div className="bg-white shadow-sm border border-gray-200 rounded-lg p-3">
+                    <div className="text-xl font-bold text-green-700">
                       44.2%
                     </div>
-                    <div className="text-sm text-gray-400">
+                    <div className="text-xs text-gray-500">
                       {isGeorgian ? "ტერიტორიის" : "of territory"}
                     </div>
                   </div>
-                  <div className="bg-gray-800/30 backdrop-blur-sm border border-gray-700 rounded-xl p-4 hover:bg-gray-800/50 transition-all">
-                    <div className="text-2xl font-bold text-teal-400">9</div>
-                    <div className="text-sm text-gray-400">
+                  <div className="bg-white shadow-sm border border-gray-200 rounded-lg p-3">
+                    <div className="text-xl font-bold text-teal-700">9</div>
+                    <div className="text-xs text-gray-500">
                       {isGeorgian ? "რეგიონი" : "regions"}
                     </div>
                   </div>
@@ -391,32 +360,32 @@ const ForestArea = () => {
           </div>
         </section>
 
-        <div className="px-4 pb-20">
+        <div className="px-4 py-12">
           <div className="max-w-7xl mx-auto">
             {/* Main Chart */}
             <div
-              className={`transform transition-all duration-700 ${
+              className={`transform transition-all duration-500 ${
                 isAnimated
                   ? "translate-y-0 opacity-100"
-                  : "translate-y-10 opacity-0"
+                  : "translate-y-6 opacity-0"
               }`}
-              style={{ transitionDelay: "200ms" }}
+              style={{ transitionDelay: "100ms" }}
             >
-              <div className="bg-gradient-to-br from-gray-800/50 to-gray-900/50 backdrop-blur-md rounded-3xl shadow-2xl p-8 mb-12 border border-gray-700">
+              <div className="bg-white rounded-xl shadow-sm p-6 mb-8 border border-gray-200">
                 <div
                   ref={chartRef}
-                  style={{ width: "100%", height: "600px" }}
+                  style={{ width: "100%", height: "500px" }}
                 />
 
                 {/* Selected Region Info */}
                 {selectedRegion && (
-                  <div className="mt-6 p-4 bg-gray-800/50 rounded-xl border border-gray-700 animate-fadeIn">
+                  <div className="mt-4 p-4 bg-blue-50 rounded-lg border border-blue-200 animate-fadeIn">
                     <div className="flex items-center justify-between">
                       <div>
-                        <h3 className="text-lg font-semibold text-green-400">
+                        <h3 className="text-base font-semibold text-blue-800">
                           {selectedRegion.name}
                         </h3>
-                        <p className="text-gray-400">
+                        <p className="text-sm text-gray-600">
                           {selectedRegion.value}{" "}
                           {isGeorgian ? "ათ. ჰა" : "thous. ha"} •
                           {calculatePercentage(selectedRegion.value)}%{" "}
@@ -425,7 +394,7 @@ const ForestArea = () => {
                       </div>
                       <button
                         onClick={() => setSelectedRegion(null)}
-                        className="text-gray-500 hover:text-gray-300 transition-colors"
+                        className="text-gray-400 hover:text-gray-600 transition-colors"
                       >
                         ✕
                       </button>
@@ -436,84 +405,78 @@ const ForestArea = () => {
             </div>
 
             {/* Statistics Cards */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
               <StatCard
                 icon={MapPin}
                 title={isGeorgian ? "დაცული ტერიტორიები" : "Protected Areas"}
                 value="574.0"
                 subtitle={isGeorgian ? "ყველაზე დიდი" : "Largest"}
-                color="from-green-400 to-emerald-500"
-                delay={300}
+                color="text-blue-700"
+                delay={200}
               />
               <StatCard
                 icon={BarChart3}
                 title={isGeorgian ? "რეგიონული საშუალო" : "Regional Average"}
                 value="307.7"
                 subtitle={isGeorgian ? "საშუალო" : "Average"}
-                color="from-blue-400 to-cyan-500"
-                delay={400}
+                color="text-blue-600"
+                delay={300}
               />
               <StatCard
                 icon={TrendingUp}
                 title={isGeorgian ? "აჭარის ა.რ." : "Adjara A.R."}
                 value="149.6"
                 subtitle={isGeorgian ? "ყველაზე პატარა" : "Smallest"}
-                color="from-purple-400 to-pink-500"
-                delay={500}
+                color="text-blue-500"
+                delay={400}
               />
             </div>
 
             {/* Info Cards */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div
-                className={`transform transition-all duration-700 ${
+                className={`transform transition-all duration-500 ${
                   isAnimated
                     ? "translate-y-0 opacity-100"
-                    : "translate-y-10 opacity-0"
+                    : "translate-y-6 opacity-0"
                 }`}
-                style={{ transitionDelay: "600ms" }}
+                style={{ transitionDelay: "500ms" }}
               >
-                <div className="group relative">
-                  <div className="absolute -inset-1 bg-gradient-to-r from-green-500 to-emerald-500 rounded-2xl blur opacity-25 group-hover:opacity-40 transition-opacity"></div>
-                  <div className="relative bg-gray-800/80 backdrop-blur-md rounded-2xl p-6 border border-gray-700">
-                    <div className="flex items-center gap-3 mb-4">
-                      <Info className="w-6 h-6 text-green-400" />
-                      <h3 className="text-xl font-semibold text-gray-100">
-                        {isGeorgian ? "მონაცემების წყარო" : "Data Source"}
-                      </h3>
-                    </div>
-                    <p className="text-gray-300 leading-relaxed">
-                      {isGeorgian
-                        ? "ინფორმაცია მოწოდებულია საქართველოს სტატისტიკის ეროვნული სამსახურის და გარემოს დაცვის სამინისტროს მიერ."
-                        : "Information provided by the National Statistics Office of Georgia and the Ministry of Environmental Protection."}
-                    </p>
+                <div className="bg-white rounded-lg shadow-sm p-5 border border-gray-200">
+                  <div className="flex items-center gap-3 mb-3">
+                    <Info className="w-5 h-5 text-blue-600" />
+                    <h3 className="text-lg font-semibold text-gray-800">
+                      {isGeorgian ? "მონაცემების წყარო" : "Data Source"}
+                    </h3>
                   </div>
+                  <p className="text-gray-600 text-sm leading-relaxed">
+                    {isGeorgian
+                      ? "ინფორმაცია მოწოდებულია საქართველოს სტატისტიკის ეროვნული სამსახურის და გარემოს დაცვის სამინისტროს მიერ."
+                      : "Information provided by the National Statistics Office of Georgia and the Ministry of Environmental Protection."}
+                  </p>
                 </div>
               </div>
 
               <div
-                className={`transform transition-all duration-700 ${
+                className={`transform transition-all duration-500 ${
                   isAnimated
                     ? "translate-y-0 opacity-100"
-                    : "translate-y-10 opacity-0"
+                    : "translate-y-6 opacity-0"
                 }`}
-                style={{ transitionDelay: "700ms" }}
+                style={{ transitionDelay: "600ms" }}
               >
-                <div className="group relative">
-                  <div className="absolute -inset-1 bg-gradient-to-r from-emerald-500 to-teal-500 rounded-2xl blur opacity-25 group-hover:opacity-40 transition-opacity"></div>
-                  <div className="relative bg-gray-800/80 backdrop-blur-md rounded-2xl p-6 border border-gray-700">
-                    <div className="flex items-center gap-3 mb-4">
-                      <Leaf className="w-6 h-6 text-emerald-400" />
-                      <h3 className="text-xl font-semibold text-gray-100">
-                        {isGeorgian ? "მეთოდოლოგია" : "Methodology"}
-                      </h3>
-                    </div>
-                    <p className="text-gray-300 leading-relaxed">
-                      {isGeorgian
-                        ? "მონაცემები დაფუძნებულია სატელიტურ გამოსახულებებზე და მიწისზედა დაკვირვებებზე 2015-2022 წლებში."
-                        : "Data is based on satellite imagery and ground observations from 2015-2022."}
-                    </p>
+                <div className="bg-white rounded-lg shadow-sm p-5 border border-gray-200">
+                  <div className="flex items-center gap-3 mb-3">
+                    <Leaf className="w-5 h-5 text-green-600" />
+                    <h3 className="text-lg font-semibold text-gray-800">
+                      {isGeorgian ? "მეთოდოლოგია" : "Methodology"}
+                    </h3>
                   </div>
+                  <p className="text-gray-600 text-sm leading-relaxed">
+                    {isGeorgian
+                      ? "მონაცემები დაფუძნებულია სატელიტურ გამოსახულებებზე და მიწისზედა დაკვირვებებზე 2015-2022 წლებში."
+                      : "Data is based on satellite imagery and ground observations from 2015-2022."}
+                  </p>
                 </div>
               </div>
             </div>
@@ -523,10 +486,10 @@ const ForestArea = () => {
 
       {/* Floating action button */}
       <button
-        className="fixed bottom-8 right-8 w-14 h-14 bg-gradient-to-r from-green-500 to-emerald-500 rounded-full shadow-lg hover:shadow-2xl transition-all duration-300 flex items-center justify-center group animate-bounce"
+        className="fixed bottom-6 right-6 w-12 h-12 bg-blue-600 rounded-full shadow-md hover:shadow-lg transition-all duration-300 flex items-center justify-center"
         onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
       >
-        <ArrowUp className="w-6 h-6 text-white group-hover:scale-110 transition-transform" />
+        <ArrowUp className="w-5 h-5 text-white" />
       </button>
     </div>
   );
