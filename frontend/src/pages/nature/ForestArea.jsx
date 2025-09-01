@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState, useCallback } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import * as echarts from "echarts";
 import {
   ArrowUp,
@@ -282,7 +282,7 @@ const ForestArea = () => {
           <div
             className={`w-10 h-10 ${color} bg-opacity-10 rounded-lg flex items-center justify-center`}
           >
-            <Icon className={`w-5 h-5 ${color.split(" ")[1]}`} />
+            {Icon && <Icon className={`w-5 h-5 ${color.split(" ")[1]}`} />}
           </div>
           <span
             className={`text-xs font-medium text-gray-500 ${color} bg-opacity-5 px-2 py-1 rounded-full`}
